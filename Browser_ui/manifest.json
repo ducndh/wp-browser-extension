@@ -1,0 +1,37 @@
+{
+  "name": "WikiInfo",
+  "version": "0.1.0",
+  "description": "Load revelant information to wikipedia page.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["http://*.wikipedia.org/wiki/*","https://*.wikipedia.org/wiki/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*.wikipedia.org/wiki/*","https://*.wikipedia.org/wiki/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/bookmark.png",
+        "assets/play.png",
+        "assets/delete.png",
+        "assets/save.png"
+      ],
+      "matches": ["http://*.wikipedia.org/wiki/*","https://*.wikipedia.org/wiki/*"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/ext-icon.png",
+      "24": "assets/ext-icon.png",
+      "32": "assets/ext-icon.png"
+    },
+    "default_title": "My Wiki Extension",
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3
+}
